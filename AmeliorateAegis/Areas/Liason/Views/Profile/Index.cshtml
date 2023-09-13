@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AmeliorateAegis.Models.Profile>
+
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<h4 class="text-center text-uppercase">List of Profiles</h4>
+
+<p>
+    <a asp-action="New" class="btn btn-sm btn-primary rounded-0 text-uppercase"><i class="fas fa-plus-circle"></i>Add Profile</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.FullNames)</th>
+            <th>@Html.DisplayNameFor(model => model.Occupation)</th>
+            <th>@Html.DisplayNameFor(model => model.DOB)</th>
+            <th>@Html.DisplayNameFor(model => model.PhoneNo)</th>
+            <th>@Html.DisplayNameFor(model => model.PhysicalAddress)</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var profile in Model)
+        {
+        <tr>
+            <td>
+                <img src="~/images/@profile.ProfilePicture"
+                     class="rounded-circle"
+                     height="40" width="40"
+                     asp-append-version="true" />
+                @profile.FullNames
+            </td>
+            <td>@profile.Occupation</td>
+            <td>@profile.DOB</td>
+            <td>@profile.PhoneNo</td>
+            <td>@profile.PhysicalAddress</td>
+           
+        </tr>
+
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,122 @@
+﻿@model IEnumerable<Pupil>
+
+@{
+    ViewData["Title"] = "Pupils";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-plain">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title mt-0"> Student List</h4>
+                    <p class="card-category"> Detail are listed below</p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tr class="">
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    First Name
+                                </th>
+                                <th>
+                                    Last Surname
+                                </th>
+                                <th>
+                                    Date Of Birth
+                                </th>
+                                <th>Actions</th>
+                            </tr>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    var dob = item.DoB.ToShortDateString();
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(model => item.Id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => item.FirstName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => item.LastName)
+                                        </td>
+                                        <td>
+
+                                            @Html.DisplayFor(model => dob)
+
+                                        </td>
+                                        <td>
+                                            <a href="javascript:void(0)" data-toggle="modal" data-target="#exampleModal">
+                                                <i class="material-icons text-success">edit</i>
+                                            </a>
+
+                                            <a href="javascript:void(0)">
+                                                <i class="material-icons text-danger">delete</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Pupil</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form asp-action="CreateLesson" asp-controller="Teacher">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">First Name</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Last Name</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label class="bmd-label-floating">Date Of Birth</label>
+                                    <input type="text" class="form-control" id="selectedStartTime" name="startTime" />
+                                    <div class="input-group-append">
+                                        <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Reporting";
+}
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<button id="btnPdf">Generate Financial Report</button>
+
+<script type="text/javascript">
+    $("#btnPdf").click(function(){
+        window.open('../Liason/Reporting/PrintFinancial?param=1', '_blank');
+    });
+</script>

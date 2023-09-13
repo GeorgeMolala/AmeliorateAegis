@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Pupil>
+
+@{
+    ViewData["Title"] = "Reports";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-plain">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title mt-0">Progress Report</h4>
+                    <p class="card-category">Details are listed below</p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tr class="">
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    First Name
+                                </th>
+                                <th>
+                                    Last Surname
+                                </th>
+                                <th>
+                                    Date Of Birth
+                                </th>
+                                <th>Actions</th>
+                            </tr>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    var dob = item.DoB.ToShortDateString();
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(model => item.Id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => item.FirstName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => item.LastName)
+                                        </td>
+                                        <td>
+
+                                            @Html.DisplayFor(model => dob)
+
+                                        </td>
+                                        <td>
+                                            <a asp-controller="Reports" asp-action="ViewReport" asp-route-id="@item.Id">
+                                                <i class="material-icons">remove_red_eye</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

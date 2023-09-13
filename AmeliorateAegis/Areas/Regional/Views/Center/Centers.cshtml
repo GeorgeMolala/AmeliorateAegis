@@ -1,0 +1,52 @@
+﻿
+@model IEnumerable<CenterDTO>
+
+@{
+    ViewData["Title"] = "Centers";
+}
+
+<script src="~/RegionalJS/Center/CenterListAppController.js" asp-append-version="true"></script>
+
+<br />
+<div class="container row p-0 m-0">
+    <div class="col-6">
+        <h2 class="text-info">Center List</h2>
+    </div>
+    <div class="col-3 offset-3">
+        <a asp-area="Regional" asp-action="Add" asp-controller="Center" class="btn btn-info form-control text-white">Add Center</a>
+    </div>
+
+
+    <div class="col-12 border p-3">
+        <table id="DT_load" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Center Code</th>
+                    <th>Center Name</th>
+                    <th>Address</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var center in Model)
+                {
+                    <tr>
+                        <td>@center.CenterCode</td>
+                        <td>@center.CenterName</td>
+                        <td>@center.Addressline1 @center.Addressline2 ,@center.Suburb ,@center.City , @center.Province </td>
+                        <td>
+                            <a asp-controller="Center" asp-action="UpdateCenter" asp-route-CenterID="@center.CenterID" class="material-icons">edit</a>
+                            <a asp-controller="Report" asp-action="DownloadCenterReport" asp-route-BudgetID="@center.CenterID" class="text-primary"><i class="material-icons">description</i></a>
+                            @*<a asp-controller="Center" asp-action="Centers" class="text-primary"><i class="material-icons"></i></a>*@
+                            <a href="javascript:deleteCenter(@center.CenterID);" class="text-danger"> <i class="material-icons">delete</i></a>
+                        </td>
+
+                    </tr>
+
+                }
+            </tbody>
+
+        </table>
+
+    </div>
+</div>

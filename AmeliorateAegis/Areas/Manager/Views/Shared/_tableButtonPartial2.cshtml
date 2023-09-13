@@ -1,0 +1,47 @@
+﻿@model ButtonPartialModel
+
+<td style="width:150px;">
+    <div class="btn-group" role="group">
+
+        <partial name="_IndividualButtonPartialView" ,
+                 model='new ButtonPartialModel
+            {
+                Action="Edit",
+                ButtonType="btn-primary",
+                Glyph="pencil",
+                Text="Edit",
+                ServiceID = Model.ServiceID,
+
+
+
+            }' />
+
+
+        <partial name="_IndividualButtonPartialView" ,
+                 model='new ButtonPartialModel
+        {
+            Action="Details",
+             ButtonType="btn-success",
+             Glyph="list",
+             Text="Details",
+             ServiceID = Model.ServiceID,
+
+
+
+
+        }' />
+        <partial name="_IndividualButtonPartialView" ,
+                 model='new ButtonPartialModel
+        {
+            Action="Delete",
+             ButtonType="btn-danger",
+             Glyph="list",
+             Text="Delete",
+             ServiceID = Model.ServiceID,
+
+
+
+
+        }' />
+    </div>
+    </td>

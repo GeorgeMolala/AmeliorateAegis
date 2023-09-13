@@ -1,0 +1,143 @@
+﻿@model AmeliorateAegis.Models.ViewModels.LessonViewModel
+
+@{
+    ViewData["Title"] = "Lessons";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-plain">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title mt-0"> Lesson's</h4>
+                    <p class="card-category">  Weekly planned lesson's</p>
+                </div>
+                <div class="card-body">
+                    <a class="btn btn-success float-right text-white mb-2" data-toggle="modal" data-target="#exampleModal">New Lesson</a>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Day
+                                </th>
+                                <th>
+                                    Start Time
+                                </th>
+                                <th>
+                                    End Time
+                                </th>
+                                <th>
+                                    Actions
+                                </th>
+                            </tr>
+                            <tbody>
+                                @foreach (var item in Model.LessonPlans)
+                                {
+                                    var startTime = item.StartTime.ToShortTimeString();
+                                    var endTime = item.EndTime.ToShortTimeString();
+                                    var day = item.Day.ToString();
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(model => item.Description)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => day)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => startTime)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => endTime)
+                                        </td>
+                                        <td>
+                                            <a href="javascript:void(0)">
+                                                <i class="material-icons text-success">edit</i>
+                                            </a>
+                                            <a href="javascript:void(0)">
+                                                <i class="material-icons text-danger">delete</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New Lesson</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <form asp-action="CreateLesson" asp-controller="Lesson">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Name</label>
+                                <input type="text" class="form-control" asp-for="Lesson.Description" />
+                            </div>
+                            <span asp-validation-for="Lesson.Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Day</label>
+                                <select class="form-control" asp-for="Lesson.Day">
+                                    <option value="@DayOfWeek.Monday">Monday</option>
+                                    <option value="@DayOfWeek.Tuesday">Tuesday</option>
+                                    <option value="@DayOfWeek.Wednesday">Wednesday</option>
+                                    <option value="@DayOfWeek.Thursday">Thursday</option>
+                                    <option value="@DayOfWeek.Friday">Friday</option>
+                                </select>
+                                <span asp-validation-for="Lesson.Day" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label asp-for="Lesson.StartTime"></label>
+                                <div>
+                                    <input asp-for="Lesson.StartTime" class="form-control" />
+                                </div>
+                                <span asp-validation-for="Lesson.StartTime" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label asp-for="Lesson.EndTime"></label>
+                                <div>
+                                    <input asp-for="Lesson.EndTime" class="form-control" />
+                                </div>
+                                <span asp-validation-for="Lesson.EndTime" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

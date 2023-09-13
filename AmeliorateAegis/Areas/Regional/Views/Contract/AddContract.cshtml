@@ -1,0 +1,82 @@
+﻿@model ContractDTO
+
+
+<div class="row">
+    <div class="col-sm-2">
+        <a asp-controller="Contract" asp-action="Contracts" class="btn btn-primary">CANCEL</a>
+    </div>
+</div>
+
+<div class="container" style="padding:30px;">
+    <div class="section-title">
+        <h2>Add Contract</h2>
+    </div>
+
+    <form method="post">
+        @*@if (Model.RegionalId != 0)
+            {
+                <Input type="hidden" asp-for="RegionalId" />
+            }*@
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-sm-6">
+                <div class="cold-6">
+                    <div>
+                        <label asp-for="ContractName">Document Title</label>
+                    </div>
+                    <input asp-for="ContractName" class="form-control" />
+                    <span asp-validation-for="ContractName" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-12">
+                <div class="cold-6">
+                    <div>
+                        <label asp-for="ContractDescr">Contract</label>
+                    </div>
+                    <textarea asp-for="ContractDescr" rows="25" class="form-control summernote">
+ 
+                   </textarea>
+                    <span asp-validation-for="ContractDescr" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-2">
+                <a asp-controller="Contract" asp-action="Contracts" class="btn btn-success form-control">VIEW LIST</a>
+            </div>
+
+
+            <div class="col-sm-2 align-content-end">
+                <button type="submit" class="btn btn-primary text-capitalize" form-control>
+                    ADD CONTRACT
+                </button>
+            </div>
+
+
+
+        </div>
+
+
+    </form>
+</div>
+
+<partial name="_ValidationScriptsPartial" />
+<style>
+    .ck-editor__editable {
+        min-height: 500px;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        ClassicEditor
+            .create(document.querySelector('.summernote'))
+            .catch(error => {
+                console.error(error);
+            });
+    });
+</script>

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<AmeliorateAegis.Models.Programme>
+
+    @{ ViewData["Title"] = "Available Programmes"; }
+
+
+    <div class="formBorder">
+        <p>
+            <a asp-action="Index" asp-controller="Dashboard" class="btn btn-secondary btn-sm">Back</a>
+        </p>
+
+        <h3 style="background-color:Highlight" class="text-center">List Of  Programmes and Description</h3>
+    </div>
+
+    <br />
+
+    <table class="table table-condensed table-hover">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            @*<th>Centre</th>
+            <th>Creation Time/Date</th>*@
+        </tr>
+
+
+        @if (Model.Count() == 0)
+        {
+        <tr>
+            <td colspan="4" style="color:red"></td>
+            <bold>No Records Found</bold>
+        </tr>
+        }
+
+        else
+        {
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Centre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationTime)
+            </td>*@
+            <td>
+                <partial name="_tableButtonPartial2" model="new ButtonPartialModel { ServiceID = ((int)item.Id) }" />
+            </td>
+        </tr>
+        }}
+    </table>
+    <div class="form-group">
+        <a class="btn btn-primary" asp-action="Index1" asp-controller="Programmes">View Programmes </a>
+        <a class="btn btn-primary" asp-action="AddP" asp-controller="Programmes"> New </a>
+    </div>

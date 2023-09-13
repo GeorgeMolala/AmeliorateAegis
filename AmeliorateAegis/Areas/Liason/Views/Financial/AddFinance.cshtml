@@ -1,0 +1,125 @@
+﻿@model AmeliorateAegis.Models.Financial
+
+<br />
+<h2 class="text-info">@*@(Model.FinancialId !=0 ? "edit" : "Add")*@ Financial Expenditure </h2>
+<br />
+
+<div class="border container" style="padding:30px;">
+    <form method="post">
+       
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+        <div class="form-group row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Region" class="control-label"></label>
+                    <select asp-for="Region" class="form-control">
+                        <option value="">Choose Region</option>
+                        <option value="WildCoast(EC)">WildCoast(EC)</option>
+                        <option value="Tsitsikamma(EC)">Tsitsikamma(EC)</option>
+                        <option value="Zululand(KZN)">Zululand(KZN)</option>
+                        <option value="WildFrontier(MP)">WildFrontier(MP)</option>
+                        <option value="Cosmos Country(MP)">Cosmos Country(MP)</option>
+                        <option value="Capricorn(LP)">Capricorn(LP)</option>
+                        <option value="Bushveld(LP)">Bushveld(LP)</option>
+                        <option value="Garden Route(WC)">Garden Route(WC)</option>
+                    </select>
+                    <span asp-validation-for="Region" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <div class="cold-6">
+                    <div>
+                        <label asp-for="centerName">Center Name</label>
+                    </div>
+                    <input asp-for="centerName" class="form-control" />
+                    <span asp-validation-for="centerName" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <div class="cold-6">
+                    <div>
+                        <label asp-for="regionCost">Cost Description</label>
+                    </div>
+                    <input asp-for="regionCost" class="form-control" />
+                    <span asp-validation-for="regionCost" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <div class="cold-6">
+                    <div>
+                        <label asp-for="amount">Amount Allocated to Cost</label>
+                    </div>
+                    <input asp-for="amount" class="form-control" />
+                    <span asp-validation-for="amount" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <div class="cold-6">
+                    <div>
+                        <label asp-for="Day">Date of payment</label>
+                    </div>
+                    <input asp-for="Day" class="form-control" />
+                    <span asp-validation-for="Day" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <div class="cold-6">
+                    <div>
+                        <label asp-for="Prov">Enter your Initials and Surname</label>
+                    </div>
+                    <input asp-for="Prov" class="form-control" />
+                    <span asp-validation-for="Prov" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <div class="col-3">
+                <div class="cold-6">
+                    <div>
+                        <label asp-for="Comment">Any Additional Comment?</label>
+                    </div>
+                    <input asp-for="Comment" class="form-control" />
+                    <span asp-validation-for="Comment" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        
+            <div class="col-3 offset-3">
+                <button type="submit" class="btn btn-primary" form-control>
+                    @*@(Model.FinancialId !=0 ? "Update" : "Add")*@
+                </button>
+            </div>
+            
+
+            <br />
+            <div class="col-3">
+                <a asp-action="FinancialTable" class="btn btn-success form-control">Back to List</a>
+            </div>
+    </form>
+</div>
+
+
+
+
+@*@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}*@
+

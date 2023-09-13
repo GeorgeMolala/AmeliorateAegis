@@ -1,0 +1,51 @@
+﻿
+@model IEnumerable<ContractDTO>
+
+@{
+    ViewData["Title"] = "Contract";
+}
+
+<script src="~/RegionalJS/Contract/ContractListAppController.js" asp-append-version="true"></script>
+
+<br />
+<div class="container row p-0 m-0">
+    <div class="col-6">
+        <h2 class="text-info">List of Contracts</h2>
+    </div>
+    <div class="col-3 offset-3">
+        <a asp-area="Regional" asp-action="AddContract" asp-controller="Contract" class="btn btn-info form-control text-white">Add Contract</a>
+    </div>
+
+    <form>
+        <div class="col-12 border p-12">
+            <table id="DT_load" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Contracts Details</th>
+                        @*<th>Date</th>*@
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var contract in Model)
+                    {
+                        <tr>
+                            <td>@contract.ContractName</td>
+                            @*<td>@contract.Date</td>*@
+                            <td>
+
+                                <a asp-controller="Report" asp-action="DownloadContractReport" asp-route-contractID="@contract.ContractID" class="text-primary"><i class="material-icons">description</i></a>
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+
+
+

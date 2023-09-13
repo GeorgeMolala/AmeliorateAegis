@@ -1,0 +1,80 @@
+﻿@model IEnumerable<AmeliorateAegis.Models.ViewModels.PupilAttendanceViewModel>
+
+@{
+    ViewData["Title"] = "Attendance";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-plain">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title mt-0"> Student Attendance</h4>
+                    <p class="card-category"> Attendance for @DateTime.Today.ToLongDateString()</p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tr class="">
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    First Name
+                                </th>
+                                <th>
+                                    Last Surname
+                                </th>
+                                <th class="text-center">
+                                    Check if Attended
+                                </th>
+                            </tr>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(model => item.Id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => item.FirstName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => item.LastName)
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="form-check">
+                                                <label class="form-check-label">
+                                                    @Html.CheckBoxFor(m => item.IsAttended, new { onclick = "UpdateAttendance(this)", data_pupil = item.Id, @class = "form-check-input" })
+                                                    <span class="form-check-sign">
+                                                        <span class="check"></span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function UpdateAttendance(elem) {
+    var attended = $(elem).is(':checked');
+    var data = $(elem).data('pupil');
+        console.log(attended)
+    $.ajax({
+        type: 'POST',
+        url: '@Url.Action("UpdateAttendance", "Attendance", new { Area = "Teacher" })',
+        data: { isChecked: attended, pupilId:data },
+        success: function(res) {
+            //console.log(res);
+        }
+    });
+}
+</script>

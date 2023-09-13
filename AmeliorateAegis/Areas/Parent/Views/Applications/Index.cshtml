@@ -1,0 +1,74 @@
+﻿@model IEnumerable<AmeliorateAegis.Models.Applications.Application>
+
+@{
+    ViewData["Title"] = "Applications";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-plain">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title mt-0"> Applications</h4>
+                </div>
+                <div class="card-body">
+                    <a class="btn btn-success float-right text-white mb-2" asp-action="Create">New</a>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Date Applied
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Pupil)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Centre)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Status)
+                                    </th>
+                                    <th>
+                                        Actions
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    var date = item.CreationTime.ToShortDateString();
+                                    var status = item.Status.ToString();
+
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => date)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Pupil.FullName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Centre.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => status)
+                                        </td>
+                                        <td>
+                                            <a asp-action="Edit" asp-route-id="@item.Id">
+                                                <i class="material-icons text-success">edit</i></a> 
+                                            <a asp-action="Details" asp-route-id="@item.Id">
+                                                <i class="material-icons text-info">info</i>
+                                            </a> 
+                                            <a asp-action="Delete" asp-route-id="@item.Id">
+                                                <i class="material-icons text-danger">delete</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

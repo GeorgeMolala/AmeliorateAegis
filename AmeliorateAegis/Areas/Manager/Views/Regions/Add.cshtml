@@ -1,0 +1,148 @@
+﻿@model AmeliorateAegis.Models.Centre
+@{
+    ViewData["Title"] = "Add Region";
+
+
+}
+
+<div id="privacy" class="container-fluid text-center">
+    <i class="fas fa-user-lock" style="font-size: 90px; color: darkorange;"></i>
+    <h1 class="display-4 text-info text-center">
+        Manage Regions
+    </h1>
+    <p class="text-info text-center" color: darkorange><i>Fill in the form below to register  Centre Details</i></p>
+</div>
+<hr />
+<div class="border container" style="padding:30px;">
+    <form asp-action="Add">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <input asp-for="Id" class="form-control" hidden="hidden" />
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Name" class="control-label"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Code" class="control-label"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Code" class="form-control" />
+            </div>
+            <div>
+                <span asp-validation-for="Code" class="text-danger"></span>
+            </div>
+        </div>
+        
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="AddressLine1" class="control-label"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="AddressLine1" class="form-control" />
+                
+            </div>
+            <div>
+                <span asp-validation-for="AddressLine1" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="AddressLine2" class="control-label"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="AddressLine2" class="form-control" />
+                @*<select asp-for="AddressLine2" class="form-control" asp-items="ViewBag.TeachersId"></select>*@
+            </div>
+            <div>
+                <span asp-validation-for="AddressLine2" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Suburb" class="control-label">SURBUB</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Suburb" class="form-control" />
+               @*// <select asp-for="Suburb" class="form-control" asp-items="ViewBag.CentreId"></select>*@
+            </div>
+            <div>
+                <span asp-validation-for="Suburb" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="City" class="control-label"></label>
+                </div>
+                <div class="col-6">
+                    <input asp-for="City" class="form-control" />
+                </div>
+                <div>
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+            </div>
+           
+        <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="Province" class="control-label"></label>
+                </div>
+                <div class="col-6">
+                    <select class="form-control" id="inputGroupSelect01">
+                        <option selected>-Please select a province-</option>
+                        <option value="1">EASTERN CAPE</option>
+                        <option value="2">GAUTENG</option>
+                        <option value="3">WESTERN CAPE</option>
+                        <option value="1">NORTHEN CAPE</option>
+                        <option value="2">LIMPOPO</option>
+                        <option value="3">FREE STATE</option>
+                        <option value="1">NORTH WEST</option>
+                        <option value="2">KWAZULU NATAL</option>
+                        <option value="3">MPUMALANGA</option>
+                    </select>
+                </div>
+                <div>
+                    <span asp-validation-for="Province" class="text-danger"></span>
+                </div>
+            </div>
+
+        <div class="form-group row ">
+            <div class="col-3">
+                <label asp-for="CreationTime" class="control-label"></label>(Date Registered by)
+            </div>
+            <div class="col-6">
+                <input type="datetime-local" name="CreationTime" value="CreationTime" />
+
+            </div>
+            <div>
+                <span asp-validation-for="CreationTime" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row  ">
+            <div class="col-3 offset-3">
+                <button type="submit" class="btn btn-primary form-control">
+                    Register
+                </button>
+            </div>
+            <div class="col-3">
+                <a asp-action="Index" asp-controller="Regions" class="btn btn-success form-control">List </a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+

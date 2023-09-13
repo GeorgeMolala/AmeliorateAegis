@@ -1,0 +1,72 @@
+﻿@model ContractDTO
+
+
+<div class="container" style="padding:30px;">
+    <div class="section-title">
+        <h2>Contract</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2">
+            <a asp-controller="Contract" asp-action="Contracts" class="btn btn-primary">CANCEL</a>
+        </div>
+    </div>
+    <form method="post">
+        @*@if (Model.RegionalId != 0)
+            {
+                <Input type="hidden" asp-for="RegionalId" />
+            }*@
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-sm-12">
+                <div class="cold-6">
+                    <div>
+                        <label asp-for="ContractName"> Title</label>
+                    </div>
+                    <input asp-for="ContractName" class="form-control" />
+                    <span asp-validation-for="ContractName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="cold-6">
+                    <div>
+                        <label asp-for="Date">Date and Time</label>
+                    </div>
+                    <input asp-for="Date" class="form-control" />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="form-group row">
+            <div class="col-sm-12">
+                <div class="cold-6">
+                    <div>
+                        <label asp-for="ContractDescr">Contract Details</label>
+                    </div>
+                    @*<input asp-for="ContractDescr" class="form-control" />*@
+                    <textarea asp-for="ContractDescr" class="form-control"></textarea>
+                    <span asp-validation-for="ContractDescr" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+
+
+    </form>
+</div>
+<script>
+
+    $('#datetime').datetimepicker({
+        format: 'hh:mm:ss a'
+    });
+</script>
+
+
+@*@section Scripts{
+        <partial name="_ValidationScriptsPartial" />
+    }*@
+

@@ -1,0 +1,82 @@
+﻿@model AmeliorateAegis.Models.Regional
+
+
+<br />
+<h2 class="text-info">@*@(Model.RegionalId !=0 ? "edit" : "Create")*@ Regional Coordinator Account </h2>
+<br />
+
+<div class="border container" style="padding:30px;">
+    <form method="post">
+        @*@if (Model.RegionalId != 0)
+        {
+            <Input type="hidden" asp-for="RegionalId" />
+        }*@
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-3">
+                <div class="cold-6">
+                    <div>
+                        <label asp-for="FirstName"> First Name</label>
+                    </div>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-3">
+                <div class="cold-6">
+                    <div>
+                        <label asp-for="LastName">Last Name</label>
+                    </div>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group-row">
+            <div class="col-3">
+                <div class="cold-6">
+                    <div>
+                        <label asp-for="Email">Email</label>
+                    </div>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group-row">
+            <div class="col-3">
+                <div class="cold-6">
+                    <div>
+                        <label asp-for="Password">Assign Temporary Password</label>
+                    </div>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="col-3 offset-3">
+            <button type="submit" class="btn btn-primary" form-control>
+                @*@(Model.FinancialId !=0 ? "Update" : "Add")*@
+            </button>
+        </div>
+
+        <br />
+        <div class="col-3">
+            <a asp-action="RegionalManager" asp-controller="Regionals" class="btn btn-success form-control">Back to List</a>
+        </div>
+    </form>
+ </div>
+
+
+
+@*@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}*@

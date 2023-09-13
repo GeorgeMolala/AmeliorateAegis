@@ -1,0 +1,50 @@
+﻿@model IEnumerable<AmeliorateAegis.Models.Financial>
+@{
+    ViewData["Title"] = "Financial";
+}
+<div class="container row p-0 m-0">
+    <div class="col-6">
+        <h2 class="text-info">Financial Expenditure</h2>
+    </div>
+
+    <div class="col-3 offset-3">
+        <a asp-action="AddFinance" asp-controller="Financial" class="btn btn-info form-control text-white">Allocate Finances to a center</a>
+    </div>
+
+
+    <div class="col-12 border p-3">
+        <table id="Table" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Region</th>
+                    <th>Center Name</th>
+                    <th>Cost Description</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Provincial Liaison Details</th>
+                    <th>Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var financial in Model)
+                {
+                    <tr>
+                        <td>@financial.Region</td>
+                        <td>@financial.centerName</td>
+                        <td>@financial.regionCost</td>
+                        <td>@financial.amount</td>
+                        <td>@financial.Day</td>
+                        <td>@financial.Prov</td>
+                        <td>@financial.Comment</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@*@section Scripts{
+        <script src="~/js/ManageFinances.js">
+        </script>
+    }*@

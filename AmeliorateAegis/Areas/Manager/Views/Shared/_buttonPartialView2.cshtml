@@ -1,0 +1,51 @@
+﻿@model AmeliorateAegis.Models.ButtonPartialModel
+
+<td style="width:150px;">
+    <div class="btn-group" role="group">
+
+        <partial name="_IndividualButtonPartialView" ,
+                 model='new ButtonPartialModel
+            {
+                Action="Edit",
+                ButtonType="btn-primary",
+                Glyph="pencil",
+                Text="Edit",
+
+                 //Pharmacym
+                 ServiceID = Model.ServiceID
+
+            }' />
+
+        <partial name="_IndividualButtonPartialView" ,
+                 model='new ButtonPartialModel
+        {
+            Action="Details",
+             ButtonType="btn-success",
+             Glyph="list",
+             Text="Details",
+
+             //Pharmacym
+              ServiceID = Model.ServiceID
+
+
+        }' />
+
+
+        <partial name="_IndividualButtonPartialView" ,
+                 model='new ButtonPartialModel
+        {
+            Action="Order",
+             ButtonType="btn-danger",
+             Glyph="plus",
+             Text="Order",
+
+             //Pharmacym
+              ServiceID = Model.ServiceID
+
+
+        }' />
+
+
+
+    </div>
+</td>

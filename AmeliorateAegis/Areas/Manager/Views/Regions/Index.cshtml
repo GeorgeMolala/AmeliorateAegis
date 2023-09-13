@@ -1,0 +1,90 @@
+﻿@model IEnumerable<AmeliorateAegis.Models.Centre>
+
+
+@{
+    ViewData["Title"] = "Available Centres";
+}
+
+<div class="container-fluid">
+    <a asp-action="Add" asp-area="Manager" asp-controller="Regions" class="btn btn-success form-control">Add Region</a>
+</div>
+
+
+
+
+<div class="formBorder">
+    <p>
+        <a asp-action="Index" asp-area="Manager" asp-controller="Dashboard" class="btn btn-secondary btn-sm">Back</a>
+    </p>
+
+    <h3 style="background-color:Highlight" class="text-center">List Of Available Centres</h3>
+</div>
+
+<br />
+
+<table class="table table-condensed table-hover">
+    <tr>
+        <th> Name</th>
+        <th>Code</th>
+        <th>AddressLine1</th>
+        <th>AddressLine2</th>
+        <th>Suburb</th>
+        <th>City</th>
+        <th>Province</th>
+        <th>Creation Time/Date</th>
+    </tr>
+
+
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td colspan="4" style="color:red"></td>
+            <bold>No Records Found</bold>
+        </tr>
+    }
+
+    else
+    {
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddressLine1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddressLine2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Suburb)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Province)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreationTime)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Parent)
+                    </td>*@
+                <td>
+                    <partial name="_tableButtonPartial2" model="new ButtonPartialModel { ServiceID = ((int)item.Id) }" />
+                </td>
+            </tr>
+        }}
+</table>
+<div class="form-group">
+    <a class="btn btn-primary" asp-action="Home" asp-controller="Dashboard">Back </a>
+</div>
+
+
+
+ 

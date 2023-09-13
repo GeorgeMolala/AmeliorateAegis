@@ -1,0 +1,117 @@
+﻿@model AmeliorateAegis.Models.Applications.Application
+
+@{
+    ViewData["Title"] = "Applications";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-8 offset-2">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title mt-0">New Application</h4>
+                        </div>
+                        <div class="card-body">
+                            <form asp-action="Create">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="Pupil.FirstName" class="control-label"></label>
+                                            <input asp-for="Pupil.FirstName" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="Pupil.LastName" class="control-label"></label>
+                                            <input asp-for="Pupil.LastName" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label asp-for="Pupil.DoB" class="control-label"></label>
+                                            <input asp-for="Pupil.DoB" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label asp-for="CentreId" class="control-label">Center</label>
+                                            <select asp-for="CentreId" class="form-control" asp-items="ViewBag.CentreId"></select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr />
+                                <h5>Address</h5>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="Pupil.AddressLine1" class="control-label"></label>
+                                            <input asp-for="Pupil.AddressLine1" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="Pupil.AddressLine2" class="control-label"></label>
+                                            <input asp-for="Pupil.AddressLine2" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="Pupil.Suburb" class="control-label"></label>
+                                            <input asp-for="Pupil.Suburb" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="Pupil.City" class="control-label"></label>
+                                            <input asp-for="Pupil.City" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label asp-for="Pupil.Province" class="control-label"></label>
+                                            <select asp-for="Pupil.Province" class="form-control">
+                                                <option>Eastern Cape</option>
+                                                <option>Free State</option>
+                                                <option>Gauteng Cape</option>
+                                                <option>Kwazulu-Natal</option>
+                                                <option>Limpopo</option>
+                                                <option>Mpumalanga</option>
+                                                <option>North West</option>
+                                                <option>Northen Cape</option>
+                                                <option>Western Cape</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group text-right">
+                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
+        </div>
+    </div>
+</div>

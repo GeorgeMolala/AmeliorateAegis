@@ -1,0 +1,108 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-AmeliorateAegis-7C609F90-D9BF-4F76-812C-7F16BE3F62EA</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Reports\**" />
+    <Content Remove="Reports\**" />
+    <EmbeddedResource Remove="Reports\**" />
+    <None Remove="Reports\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20211010180424_AddedApplicationUser.cs" />
+    <Compile Remove="Data\Migrations\20211010180424_AddedApplicationUser.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211020173545_AddedRoleManagement.cs" />
+    <Compile Remove="Data\Migrations\20211020173545_AddedRoleManagement.Designer.cs" />
+    <Compile Remove="Data\Migrations\20211022140418_Added Attributes.cs" />
+    <Compile Remove="Data\Migrations\20211022140418_Added Attributes.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Areas\Regional\Views\Visitor\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Utility\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Areas\Liason\Views\Email\SendEmail.cshtml" />
+    <None Include="Areas\Liason\Views\Error\PageNotFound.cshtml" />
+    <None Include="Areas\Liason\Views\Home\Index.cshtml" />
+    <None Include="Areas\Liason\Views\Home\Privacy.cshtml" />
+    <None Include="Areas\Liason\Views\Meetings\Create.cshtml" />
+    <None Include="Areas\Liason\Views\Meetings\Details.cshtml" />
+    <None Include="Areas\Liason\Views\Meetings\Edit.cshtml" />
+    <None Include="Areas\Liason\Views\Meetings\Index.cshtml" />
+    <None Include="Areas\Liason\Views\Profile\New.cshtml" />
+    <None Include="Areas\Liason\Views\Regionals\Insert.cshtml" />
+    <None Include="Areas\Liason\Views\Regionals\RegionalManager.cshtml" />
+    <None Include="Areas\Liason\Views\Reporting\Index.cshtml" />
+    <None Include="Areas\Manager\Views\Repport\Enrollment.cshtml" />
+    <None Include="Areas\Manager\Views\Repport\Index.cshtml" />
+    <None Include="Areas\Manager\Views\Repport\List.cshtml" />
+    <None Include="Areas\Manager\Views\Repport\Period.cshtml" />
+    <None Include="Areas\Manager\Views\Repport\Program.cshtml" />
+    <None Include="Areas\Regional\Views\Budget\AddBudget.cshtml" />
+    <None Include="Areas\Regional\Views\Budget\Budgets.cshtml" />
+    <None Include="Areas\Regional\Views\Budget\Index.cshtml" />
+    <None Include="Areas\Regional\Views\Center\Add.cshtml" />
+    <None Include="Areas\Regional\Views\Center\Centers.cshtml" />
+    <None Include="Areas\Regional\Views\Center\DeleteCenter.cshtml" />
+    <None Include="Areas\Regional\Views\Center\UpdateCenter.cshtml" />
+    <None Include="Areas\Regional\Views\Contract\AddContract.cshtml" />
+    <None Include="Areas\Regional\Views\Contract\Contracts.cshtml" />
+    <None Include="Areas\Regional\Views\Contract\DeleteContract.cshtml" />
+    <None Include="Areas\Regional\Views\Contract\Index.cshtml" />
+    <None Include="Areas\Regional\Views\Contract\UpdateContract.cshtml" />
+    <None Include="Areas\Regional\Views\Home\Index.cshtml" />
+    <None Include="Areas\Regional\Views\Report\ReportPage.cshtml" />
+    <None Include="Areas\Regional\Views\Shared\_Layout.cshtml" />
+    <None Include="Areas\Regional\Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Areas\Regional\Views\Visitor\AddVisitor.cshtml" />
+    <None Include="Areas\Regional\Views\Visitor\DeleteVisitor.cshtml" />
+    <None Include="Areas\Regional\Views\Visitor\Index.cshtml" />
+    <None Include="Areas\Regional\Views\Visitor\UpdateVisitor.cshtml" />
+    <None Include="Areas\Regional\Views\Visitor\Visitors.cshtml" />
+    <None Include="Views\Report\CenterReportPage.cshtml" />
+    <None Include="Views\Report\ReportPage.cshtml" />
+    <None Include="wwwroot\RegionalJS\Center\CenterListAppController.js" />
+    <None Include="wwwroot\RegionalJS\Contract\ContractListAppController.js" />
+    <None Include="wwwroot\RegionalJS\Visitor\VisitorListAppController.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCoreHero.ToastNotification" Version="1.1.0" />
+    <PackageReference Include="DinkToPdf" Version="1.0.8" />
+    <PackageReference Include="iTextSharp.LGPLv2.Core" Version="1.7.5" />
+    <PackageReference Include="Microsoft.AspNet.WebApi" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.19" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.19" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.19" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.20" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.20">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\Liason\Views\Shared\_Layout.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Liason\Views\_ViewImports.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Areas\Liason\Views\_ViewStart.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
